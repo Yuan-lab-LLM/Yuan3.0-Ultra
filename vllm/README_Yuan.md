@@ -36,7 +36,7 @@ For deployment, we suggest using tensor parallelism combined with pipeline paral
 Please refer to the tutorial for starting the ray service.[this](./examples/online_serving/multi-node-serving.sh)
 ```bash
 python -m vllm.entrypoints.openai.api_server --model=/path/Yuan3.0-Ultra-int4 --port 8100 --gpu-memory-utilization 0.9 \
- --tensor-parallel-size 2 --pipeline-parallel-size 4 --trust-remote-code --allowed-local-media-path "/path/images"
+ --tensor-parallel-size 4 --pipeline-parallel-size 4 --trust-remote-code --allowed-local-media-path "/path/images"
 ```
 
 **3.3 Client request **
