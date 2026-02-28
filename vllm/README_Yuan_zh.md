@@ -31,7 +31,7 @@ Yuan3.0 Ultra Model 仅支持 vLLm V1架构。
 ray服务启动请参考教程[this](./examples/online_serving/multi-node-serving.sh) 
 ```bash
 python -m vllm.entrypoints.openai.api_server --model=/path/Yuan3.0-Ultra-int4 --port 8100 --gpu-memory-utilization 0.9 \
- --tensor-parallel-size 2 --pipeline-parallel-size 4 --trust-remote-code --allowed-local-media-path "/path/images"
+ --tensor-parallel-size 4 --pipeline-parallel-size 4 --trust-remote-code --allowed-local-media-path "/path/images"
 ```
 
 **3.3  请求调用**
