@@ -81,10 +81,11 @@ loss_agg_mode="token-mean"
 
 
 ## 5. Convert Model to Hugging Face Format
+### 5.1 File completion
+First, copy all files from the `Yuan3.0-Ultra/rlhf/verl/tests/convert/` directory to the trained model path: `actor/huggingface`.
 
-1. First, copy all files from the `Yuan3.0-Ultra/rlhf/verl/tests/convert/` directory to the trained model path: `actor/huggingface`.
-
-2. Modify the following three parameters in the `Yuan3.0-Ultra/rlhf/verl/tools/merge_1020B.sh` script, then execute it:
+### 5.2 Script Modification and Execution
+Modify the following three parameters in the `Yuan3.0-Ultra/rlhf/verl/tools/merge_1020B.sh` script, then execute it:
    ```bash
    --local_dir   # Path to the trained model (specify up to the 'actor' directory level)
    --target_dir  # Output path

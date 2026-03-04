@@ -82,8 +82,11 @@ loss_agg_mode="token-mean"
 
 
 ## 五、模型转换为HF格式
-1. 先将Yuan3.0-Ultra/rlhf/verl/tests/convert/目录下的所有文件拷贝到训练模型路径actor/huggingface目录
-2. 修改Yuan3.0-Ultra/rlhf/verl/tools/merge_1020B.sh脚本中的三个参数，然后执行
+### 5.1 文件补齐
+先将Yuan3.0-Ultra/rlhf/verl/tests/convert/目录下的所有文件拷贝到训练模型路径actor/huggingface目录
+
+### 5.2 脚本修改与执行
+修改Yuan3.0-Ultra/rlhf/verl/tools/merge_1020B.sh脚本中的三个参数，然后执行
     ```bash
     --local_dir 训练模型路径 写到actor那级
     --target_dir 输出路径 
