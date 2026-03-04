@@ -4,7 +4,7 @@
 ![seed logo](https://avatars.githubusercontent.com/u/148021798?s=200&v=4)
 
 
-<h1>Yuan3.0 Ultra is a Multimodal Large Language Model</h1>
+<h1>Yuan3.0 Ultra: A Multimodal Large Language Model</h1>
 
 </div>
 
@@ -12,20 +12,14 @@
 ## 目录
 
 - [Yuan3.0 Ultra](#yuan30-ultra)
-  - [快速启动](#快速启动)
     - [环境配置](#环境配置)
-      - [SQL环境配置](#sql环境配置)
-        - [数据集准备](#数据集准备)
-    - [数据预处理](#数据预处理)
+    - [数据处理](#数据处理)
     - [模型微调](#模型微调)
     - [强化学习](#强化学习)
     - [推理服务](#推理服务)
-      - [linux部署](#linux部署)
     - [联系我们](#联系我们)
 
 # Yuan3.0 Ultra
-
------
 
 对本仓库源码的使用遵循开源许可协议 **Apache 2.0**。
 
@@ -37,9 +31,7 @@ Yuan3.0 Ultra模型支持商用，不需要申请授权，请您了解并遵循[
 
 ### 环境配置
 
-我们建议使用有我们提供的最新的`pre-built docker image`.
-
-我们可以通过下面命令启动容器：
+建议使用项目提供的image: yuanlabai/rlhf_yuan:v1.0，并可以通过下面命令启动容器：
 
 ```bash
 docker pull yuanlabai/rlhf_yuan:v1.0
@@ -49,47 +41,21 @@ docker run --gpus all -itd --network=host -v /path/to/yuan_3.0:/workspace/yuan_3
 docker exec -it your_name bash
 ```
 
-我们仅支持使用提供的`docker`镜像
 
-#### SQL环境配置
+### 数据处理
 
-##### 数据集准备
-1. **下载地址**：
-   - Spider：https://drive.google.com/file/d/1mkCx2GOFIqNesD4y8TDAO1yX1QZORP5w/view
-   - BIRD：https://bird-bench.github.io/
-
-2. **配置命令**（在头节点执行）：
-```bash
-# 设置本地数据集路径
-export BIRD_PATH=/your_local_path/bird_data
-export SPIDER_PATH=/your_local_path/spider_data
-
-# 复制到工作目录
-cp -rf $BIRD_PATH /home/data/
-cp -rf $SPIDER_PATH /home/
-```
-
-### 数据预处理
-
-我们提供了数据预处理的脚本，参考[数据预处理说明文档](./docs/data_process_zh.md).
-
+项目提供了数据处理的脚本，参考[数据预处理说明文档](./docs/data_process_zh.md).
 
 ### 模型微调
 
-请参考指令微调 [源3.0 指令微调示例](./docs/instruct_tuning_zh.md)。
-
-
+微调流程请参考[源3.0 指令微调示例](./docs/instruct_tuning_zh.md)。
 
 ### 强化学习
-
 强化学习流程请参考[强化学习说明文档](./docs/RL_training_zh.md)。
 
 
 ### 推理服务
-
-#### linux部署
-
-请参考[部署文档](../vllm/README_Yuan_zh.md)
+推理部署请参考[部署文档](../vllm/README_Yuan_zh.md)
 
 ### 联系我们
 

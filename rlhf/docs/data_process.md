@@ -8,8 +8,8 @@ This module provides specialized utilities for converting training datasets into
 
 | Variable Name | Description |
 |---------------|-------------|
-| `--input_path` | Each line specifies: number of rows to select, file path, data category, and thinking mode status |
-| `--output_path` | Storage path for the converted parquet data |
+| `--input_path` | Training data, each line specifies: number of rows, file path, data category, and thinking mode status |
+| `--output_path` | Path for the converted parquet data |
 | `--split_type` | Data split type: 'train' or 'test' |
 | `--flag_image` | Multimodal flag: 1 for image-text data, 0 for text-only data |
 

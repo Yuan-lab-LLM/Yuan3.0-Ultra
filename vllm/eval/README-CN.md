@@ -1,4 +1,4 @@
-## 我们在众多评测集上对Yuan3.0 Ultra模型进行了评估测试，详细的汇总如下：
+## 在众多评测集上对Yuan3.0 Ultra模型进行了评估测试，详细的汇总如下：
 <table style="border-collapse: collapse;">
   <tr>
     <th style="border: 1px solid white; padding: 8px;">序号</th>
@@ -170,7 +170,7 @@
   </tr>
 </table>
 
-*注：ChatRAG、MMTab以及SummEval评测集只是示例，全量的数据请去各自的项目中下载*
+*注：ChatRAG、MMTab以及SummEval评测集仅为示例，全量的数据请前往官方项目中下载*
 
 
 # Example
@@ -189,8 +189,9 @@ out_file_name：结果文件
 port：模型服务端口，根据vllm或sglang服务端启动时设置的端口来决定这里的赋值
 ```
 
-### 以AIME2024任务为例，打分脚本如下
+### 以AIME2024任务为例，评测脚本如下
 ```bash
 python script/judge_gsm_choice_easy.py --input_path result/aime-2024/2024_II_cle_001.txt --output_path test_out/ --origin_path eval/datasets/aime-2024/AIME_2024_I_cle.txt
 ```
+
 

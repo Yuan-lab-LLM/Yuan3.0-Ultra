@@ -4,7 +4,7 @@
 
 This document provides instructions for Decoupled Advantage Policy Optimization (DAPO) reinforcement learning for the Yuan3.0 Ultra model.
 
-The reinforcement learning training of Yuan3.0 Ultra adopts the Decoupled Advantage Policy Optimization (DAPO) framework at its core. It simultaneously supports multiple preference optimization strategies such as GSPO (General-Sum Preference Optimization) and SAPO (Strategy-Aware Preference Optimization). It can flexibly adapt to training data of varying length scales (4K/16K) and provides a robust mechanism for handling ultra-long inputs.
+The reinforcement learning training of Yuan3.0 Ultra adopts the Decoupled Advantage Policy Optimization (DAPO) framework. It simultaneously supports multiple preference optimization strategies such as GSPO (General-Sum Preference Optimization) and SAPO (Strategy-Aware Preference Optimization). It can flexibly adapt to training data of varying length scales and provides a robust mechanism for handling ultra-long inputs.
 
 ## 2. Usage
 
@@ -31,7 +31,7 @@ Before training, configure the following variables according to the actual paths
 
 | Variable | Type | Description |
 |----------------------|------|-------------|
-| `MODEL_PATH` | String | Path to the directory containing the pre-trained model files. |
+| `MODEL_PATH` | String | Path to the directory containing the base model files. |
 | `TRAIN_16K_FILE` | String | File path for the 16K-length training dataset. |
 | `TRAIN_4K_FILE` | String | File path for the 4K-length training dataset. |
 | `CKPTS_DIR` | String | Directory for saving checkpoint files during training. |
@@ -82,19 +82,18 @@ loss_agg_mode="token-mean"
 
 ## 5. Convert Model to Hugging Face Format
 ### 5.1 File completion
-First, copy all files from the `Yuan3.0-Ultra/rlhf/verl/tests/convert/` directory to the trained model path: `actor/huggingface`.
+Copy all files from the `Yuan3.0-Ultra/rlhf/verl/tests/convert/` directory to the trained model path: `actor/huggingface`.
 
 ### 5.2 Script Modification and Execution
-Modify the following three parameters in the `Yuan3.0-Ultra/rlhf/verl/tools/merge_1020B.sh` script, then execute it:
-   ```bash
-   --local_dir   # Path to the trained model (specify up to the 'actor' directory level)
-   --target_dir  # Output path
-   --vit_dir     # Path to the ViT model
-   ```
+Modify the following three parameters in the `Yuan3.0-Ultra/rlhf/verl/tools/merge_1020B.sh` script and execute it:
+```bash
+--local_dir   # Path to the trained model
+--target_dir  # Output path
+--vit_dir     # Path to the ViT model
+```
 
-   ```bash
-   # Execute the conversion script
-   cd Yuan3.0-Ultra/rlhf/verl
-   bash tools/merge_1020B.sh
-   ```
+```bash
+cd Yuan3.0-Ultra/rlhf/verl
+bash tools/merge_1020B.sh
+```
 
