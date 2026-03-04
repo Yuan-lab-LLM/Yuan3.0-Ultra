@@ -2,9 +2,7 @@
 
 ## 一、简介
 
-本文档提供了 Yuan3.0 Ultra 模型的 Decoupled Advantage Policy Optimization (DAPO) 强化学习说明。
-
-Yuan3.0 Ultra 强化学习训练核心采用 Decoupled Advantage Policy Optimization (DAPO) 框架，同时支持 GSPO（General-Sum Preference Optimization）、SAPO（Strategy-Aware Preference Optimization）等多种偏好优化策略，并可灵活适配不同长度规模的训练数据。
+本文档提供了 Yuan3.0 Ultra 模型的 Reflection-aware Adaptive Policy Optimization (RAPO) 强化学习说明。
 
 ## 二、使用方法
 
@@ -18,9 +16,9 @@ RAY_USE_IP_ADDRESS=True ray start --num-cpus=64 --num-gpus=8 --memory=8737418240
 bash config.sh host
 ```
 
-### 步骤2：启动 DAPO 训练
+### 步骤2：启动 RAPO 训练
 ```bash
-# 执行1020B规模YuanVL模型的DAPO训练脚本
+# 执行1020B规模YuanVL模型的RAPO训练脚本
 cd Yuan3.0-Ultra/rlhf/verl
 bash recipe/dapo/run_dapo_yuanvl_megatron_1020B.sh
 ```
@@ -49,42 +47,12 @@ bash recipe/dapo/run_dapo_yuanvl_megatron_1020B.sh
 | `overlong_penalty_factor` | 浮点数 | 超长输入惩罚因子（用于损失函数权重调整） |
 | `enable_overlong_prompts_filter` | 布尔值 | 是否自动过滤超过`max_prompt_length`的训练样本 |
 
-## 四、优化策略切换
-Yuan3.0 Ultra 支持三种偏好优化策略，通过设置以下环境变量即可切换，各策略的参数配置如下：
 
-### 4.1 GSPO（General-Sum Preference Optimization）
-```bash
-# GSPO 策略配置
-loss_mode=gspo
-clip_ratio_low=0.0003     
-clip_ratio_high=0.0004    
-loss_agg_mode="seq-mean-token-mean"
-```
-
-### 4.2 DAPO（Distribution-Aware Preference Optimization）
-```bash
-# DAPO 策略配置（默认推荐）
-loss_mode=eighty-twenty
-clip_ratio_low=0.2
-clip_ratio_high=0.28
-loss_agg_mode="token-mean"
-```
-
-### 4.3 SAPO（Strategy-Aware Preference Optimization）
-```bash
-# SAPO 策略配置
-loss_mode=sapo
-clip_ratio_low=1.05  # tau_neg（负样本tau值）
-clip_ratio_high=1.00 # tau_pos（正样本tau值）
-loss_agg_mode="token-mean"
-```
-
-
-## 五、模型转换为HF格式
-### 5.1 配置补齐
+## 四、模型转换为HF格式
+### 4.1 配置补齐
 将Yuan3.0-Ultra/rlhf/verl/tests/convert/目录下的所有文件拷贝到训练模型路径actor/huggingface目录。
 
-### 5.2 脚本修改与执行
+### 4.2 脚本修改与执行
 修改Yuan3.0-Ultra/rlhf/verl/tools/merge_1020B.sh脚本中的参数并运行：
 
 ```bash
