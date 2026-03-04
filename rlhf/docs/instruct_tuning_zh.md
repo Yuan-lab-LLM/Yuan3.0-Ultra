@@ -31,4 +31,4 @@ DATA_PATH='<token_number> /path/dataset'
 ```
 
 
-更多命令行参数的描述请见[REAMME.md](https://github.com/NVIDIA/Megatron-LM/blob/main/README.md)。
+更多命令行参数的描述请见[README.md](https://github.com/NVIDIA/Megatron-LM/blob/main/README.md)。
