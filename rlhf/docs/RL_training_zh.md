@@ -87,13 +87,14 @@ loss_agg_mode="token-mean"
 
 ### 5.2 脚本修改与执行
 修改Yuan3.0-Ultra/rlhf/verl/tools/merge_1020B.sh脚本中的参数并运行：
-    ```bash
-    --local_dir 训练模型路径
-    --target_dir 模型输出路径 
-    --vit_dir vit模型路径
-    ```
-    ```bash
-    # 执行转换脚本
-    cd Yuan3.0-Ultra/rlhf/verl
-    bash tools/merge_1020B.sh
-    ```
+
+```bash
+--local_dir 训练模型路径
+--target_dir 模型输出路径 
+--vit_dir vit模型路径
+```
+    
+```bash
+cd Yuan3.0-Ultra/rlhf/verl
+bash tools/merge_1020B.sh
+```
