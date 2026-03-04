@@ -40,7 +40,7 @@ python -m vllm.entrypoints.openai.api_server --model=/path/Yuan3.0-Ultra-int4 --
  --tensor-parallel-size 4 --pipeline-parallel-size 4 --trust-remote-code --allowed-local-media-path "/path/images"
 ```
 > **Note 1**: For the int4 model, we deploy the service using 2 nodes (16\*A800), with parallel configuration of tensor-parallel-size=4 and pipeline-parallel-size=4.   
-> **Note 2**: For the blfoat16 model, we deploy the service using 6 nodes (48\*A800), with parallel configuration of tensor-parallel-size=4 and pipeline-parallel-size=12.   
+> **Note 2**: For the bfloat16 model, we deploy the service using 6 nodes (48\*A800), with parallel configuration of tensor-parallel-size=4 and pipeline-parallel-size=12.   
 
 **3.3  Client request**
 

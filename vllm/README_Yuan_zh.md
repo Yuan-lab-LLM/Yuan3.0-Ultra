@@ -34,7 +34,7 @@ python -m vllm.entrypoints.openai.api_server --model=/path/Yuan3.0-Ultra-int4 --
  --tensor-parallel-size 4 --pipeline-parallel-size 4 --trust-remote-code --allowed-local-media-path "/path/images"
 ```
 > **Note 1**:对于int4模型，我们使用2个节点(16\*A800)进行部署服务，并行方式设置4路张量并行和4路流水线并行。    
-> **Note 2**:对于blfoat16模型，我们使用6个节点(48\*A800)进行部署服务，并行方式设置4路张量并行和12路流水线并行。     
+> **Note 2**:对于bfloat16模型，我们使用6个节点(48\*A800)进行部署服务，并行方式设置4路张量并行和12路流水线并行。     
 
 **3.3  请求调用**
 
