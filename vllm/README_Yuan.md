@@ -39,6 +39,8 @@ Please refer to the tutorial [multi-node-serving](./examples/online_serving/mult
 python -m vllm.entrypoints.openai.api_server --model=/path/Yuan3.0-Ultra-int4 --port 8100 --gpu-memory-utilization 0.9 \
  --tensor-parallel-size 4 --pipeline-parallel-size 4 --trust-remote-code --allowed-local-media-path "/path/images"
 ```
+> **Note 1**: For the int4 model, we deploy the service using 2 nodes (16\*A800), with parallel configuration of tensor-parallel-size=4 and pipeline-parallel-size=4.   
+> **Note 2**: For the blfoat16 model, we deploy the service using 6 nodes (48\*A800), with parallel configuration of tensor-parallel-size=4 and pipeline-parallel-size=12.   
 
 **3.3  Client request**
 

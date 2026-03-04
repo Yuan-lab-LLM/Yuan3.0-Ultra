@@ -33,6 +33,8 @@ Yuan3.0 Ultra Model 仅支持 vLLm V1架构。
 python -m vllm.entrypoints.openai.api_server --model=/path/Yuan3.0-Ultra-int4 --port 8100 --gpu-memory-utilization 0.9 \
  --tensor-parallel-size 4 --pipeline-parallel-size 4 --trust-remote-code --allowed-local-media-path "/path/images"
 ```
+> **Note 1**:对于int4模型，我们使用2个节点(16\*A800)进行部署服务，并行方式设置4路张量并行和4路流水线并行。    
+> **Note 2**:对于blfoat16模型，我们使用6个节点(48\*A800)进行部署服务，并行方式设置4路张量并行和12路流水线并行。     
 
 **3.3  请求调用**
 
