@@ -12,8 +12,6 @@
     src="https://img.shields.io/badge/💾%20ModelScope-Yuan3.0-6b4fbb?color=6b4fbb&logoColor=white"/></a>
   <a href="https://x.com/YuanAI_Lab"><img alt="Twitter Follow"
     src="https://img.shields.io/badge/Twitter-Yuanlabai-white?logo=x&logoColor=white"/></a>
-  <a href="https://arxiv.org/abs/2601.01718"><img alt="arXiv"
-    src="https://img.shields.io/badge/arXiv-Yuan3.0%20Paper-b31b1b?logo=arxiv&logoColor=white"/></a>
 
 </div>
 
