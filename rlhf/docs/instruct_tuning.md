@@ -28,4 +28,4 @@ You can set `DATA_PATH` as:
 DATA_PATH='<token_number> /path/dataset'
 ```
 
-For more descriptions of command-line arguments, please refer to [REAMME.md](https://github.com/NVIDIA/Megatron-LM/blob/main/README.md).
+For more descriptions of command-line arguments, please refer to [README.md](https://github.com/NVIDIA/Megatron-LM/blob/main/README.md).
