@@ -1,6 +1,6 @@
 <div align="center">
 <h1>
-  Yuan3.0 Ultra Multimodal Foundation Large Model
+  Yuan3.0 Ultra Multimodal Foundation Large Language Model
 </h1>
 </div>
 
@@ -33,39 +33,34 @@
 
 * **[2026-03-04]** **Yuan3.0 Ultra Multimodal Foundation Large Model is released — a trillion-parameter flagship model designed for enterprise-grade scenarios.**
 
-
-
-
 ## 1. Introduction
 
-Yuan3.0 Ultra adopts a unified multimodal model architecture consisting of a vision encoder, a language backbone, and a multimodal alignment module, enabling joint modeling of visual and linguistic information. The language backbone is built on a Mixture-of-Experts (MoE) architecture comprising 103 Transformer layers. At the start of training, the model has 1515B parameters; through the Layer-Adaptive Expert Pruning (LAEP) method, the team optimized the model to 1010B parameters during pre-training, improving pre-training computational efficiency by 49%. The activated parameters of Yuan3.0 Ultra are 68.8B. In addition, the model incorporates a Localized Filtering-based Attention (LFA) mechanism, which effectively strengthens the modeling of semantic relationships and achieves higher model accuracy compared to the classic attention structure.
+Yuan3.0 Ultra employs a unified multimodal model architecture, integrating a vision encoder, a language backbone, and a multimodal alignment module to enabling synergistic modeling of visual and linguistic information. The language backbone is built on a Mixture-of-Experts (MoE) architecture, featuring 103 Transformer layers. The model was pre-trained from scratch original with 1515B parameters. Through the innovative Layer-Adaptive Expert Pruning (LAEP) algorithm, the parameter count was reduced to 1010B during pre-training, improving pre-training efficiency by 49%. The activated parameter count for Yuan3.0 Ultra is 68.8B. Furthermore, the model incorporates a Localized Filtering-based Attention (LFA) mechanism, which effectively enhances the modeling of semantic relationships and achieves higher accuracy compared to classical attention architectures.
 
-Yuan3.0 Ultra refines the RIRM (Reflection Inhibition Reward Mechanism) proposed in <a href="https://github.com/Yuan-lab-LLM/Yuan3.0" target="_blank">**Yuan3.0 Flash**</a> by introducing reward constraints on the number of reflection steps, enabling the model to actively reduce unnecessary reflections once a reliable answer is obtained, while preserving the necessary reasoning depth for complex problems. This mechanism effectively alleviates the "overthinking" phenomenon in fast-thinking mode. Training results show that under this controlled fast-thinking strategy, model accuracy improves significantly while the number of tokens generated during inference decreases continuously, achieving simultaneous optimization of accuracy and computational efficiency.
+Yuan3.0 Ultra enhances the Reflection Inhibition Reward Mechanism (RIRM) proposed in <a href="https://github.com/Yuan-lab-LLM/Yuan3.0" target="_blank">**Yuan3.0 Flash**</a>. By incorporating reward constraints based on the number of reflection steps, the model actively reduces ineffective reflections after arriving at the "first correct answer," while retaining the necessary reasoning depth for complex problems. This approach effectively mitigates the "overthinking" phenomenon in fast-thinking reinforcement learning. Training results demonstrate that under this controlled fast-thinking strategy, the model’s accuracy improves significantly, while the number of tokens generated during reasoning continually decreases—achieving simultaneous gains in both accuracy and computational efficiency.
 
-We also release the <a href="./Docs/Yuan3.0_Ultra Paper.pdf">**Technical Report**</a> for Yuan3.0 Ultra, where more detailed technical specifications and evaluation results can be found.
-
+Additionally, the <a href="./Docs/Yuan3.0_Ultra Paper.pdf">**technical report**</a> for Yuan3.0 Ultra has been released, which provides more detailed technical specifications and evaluation results.
 
 <div align=center> <img src=https://github.com/Yuan-lab-LLM/Yuan3.0-Ultra/blob/main/Docs/Yuan3.0-Ultra-architecture.png width=80% />
 
-Fig.1: Architecture of the Yuan3.0 Ultra Multimodal Large Model
+Fig.1: Yuan3.0 Ultra Multimodal Architecture
 
 </div>
 
-
 ## Core Features
 
-🚀 **Layer-Adaptive Expert Pruning (LAEP)**: LAEP is a novel algorithm specifically designed for MoE LLM pre-training. It achieves a 49% improvement in pre-training efficiency for trillion-parameter large models and a 33% reduction in parameter count (from 1515B to 1010B).
+🚀 **Layer-Adaptive Expert Pruning (LAEP)**: The innovative Layer-Adaptive Expert Pruning (LAEP) algorithm is a novel method developed specifically for pre-training Mixture-of-Experts (MoE) Large Language Models. It improves pre-training efficiency by 49% and reduces the total parameter count by 33% (from 1515B to 1010B).
 
 
-⚡ **Fast-Thinking Reinforcement Learning (RAPO)**: Refines the Reflection Inhibition Reward Mechanism (RIRM) proposed in Yuan3.0 Flash and integrates it into a fast-thinking reinforcement learning paradigm for post-training. The improved RIRM yields a 16.33% gain in training accuracy and reduces output token length by 14.38%.
+⚡ **Fast-Thinking Reinforcement Learning（RAPO）**: Enhanced the Reflection Inhibition Reward Mechanism (RIRM) introduced in Yuan3.0 Flash and integrated it into a fast-thinking reinforcement learning paradigm for post-training. The improved RIRM yields a 16.33% gain in training accuracy and reduces output token length by 14.38%.
 
 
-🎯 **Deep Optimization for Enterprise Scenarios**: Yuan3.0 Ultra is capability-built from the design stage for real enterprise application scenarios. It is not only a powerful multimodal model but also a "core engine" capable of driving complex Agents. The model demonstrates stable advantages across multiple enterprise-level task evaluations:
-* Retrieval-Augmented Generation (RAG): Achieves leading results on ChatRAG, Docmatix, and other benchmarks, precisely locating and leveraging enterprise private-domain knowledge to provide reliable grounding for answers;
-* Complex Table and Document Understanding: Demonstrates deep analytical capabilities over structured data across multi-task benchmarks such as MMTab, handling complex documents like financial reports and approval forms with ease;
-* High-Quality Summary Generation: On SummEval, generates summaries that are both faithful to the source and highly condensed, ensuring accurate and efficient information delivery;
-* Agent Tool Invocation: On the BFCL benchmark, excels at multi-step tool invocation and coordination, laying a solid foundation for automated execution of complex tasks;
-* Text-to-SQL: Achieves outstanding performance on Spider 1.0 and BIRD benchmarks, providing strong support for enterprise structured data scenarios requiring precise queries.
+🎯 **Deep Optimization for Enterprise Scenarios**: Yuan3.0 Ultra is designed from the ground up with its capabilities optimized for enterprise scenarios. It is not merely a powerful multimodal language model, but also serves as a robust "core engine" for driving complex intelligent agents. The model shows consistent advantages across a wide range of enterprise scenarios benchmarks:
+* Retrieval-Augmented Generation (RAG): Yuan3.0 Ultra achieves leading accuracy on benchmarks like ChatRAG and DocMatix, capable of precisely locating and utilizing enterprise private domain knowledge to provide reliable evidence for responses.
+* Complex Table and Document Understanding: On multi-task benchmarks such as MMTab, Yuan3.0 Ultra demonstrates deep analytical capabilities for structured data and can readily handle complex documents like financial reports and approval forms.
+* High-Quality Summarization: On SummEval, Yuan3.0 Ultra can generate summaries that are both faithful to the source text and highly concise, ensuring accurate and efficient information delivery.
+* Agent Tool Invocation: Yuan3.0 Ultra demonstrates proficiency in multi-step tool calling and collaboration on the BFCL benchmark, establishing a solid foundation for automating complex workflows.
+* Database Query Statement Generation (Text-to-SQL): Yuan3.0 Ultra demonstrates excellent performance on the Spider 1.0 and BIRD benchmarks, delivering robust support for precise querying in enterprise scenarios that involve structured data.
 
 
 ## 2. Performance
@@ -90,9 +85,9 @@ The evolution of expert load during large model pre-training can be divided into
 
 In the stable phase of training, expert token loads are highly imbalanced: a small number of experts carry a large share of computation while some experts remain persistently underutilized, leading to wasted computational resources. The disparity between the highest- and lowest-load experts in the stable phase can reach nearly 500×.
 
-LAEP adaptively prunes low-load experts layer by layer according to the token distribution in each layer during the stable phase, and proposes an expert rearrangement algorithm that greedily redistributes the remaining experts across computing devices to achieve balanced load. Yuan3.0 Ultra begins pre-training with 1515B parameters and applies LAEP during the stable phase, achieving 33.3% parameter compression and a 49% improvement in pre-training efficiency.
+LAEP adaptively prunes low-load experts layer by layer according to the token distribution in each layer during the stable phase, and proposes an expert rearrangement algorithm that greedily rearranges the remaining experts across computing devices to achieve balanced load. Yuan3.0 Ultra begins pre-training with 1515B parameters and applies LAEP during the stable phase, achieving 33.3% parameter reduction and a 49% improvement in pre-training efficiency.
 
-### Improved Reflection Inhibition Reward Mechanism (RIRM)
+### Revised Reflection Inhibition Reward Mechanism (RIRM)
 
 During the Fast-thinking RL phase, models tend to produce excessive reflection steps on mathematical and scientific reasoning tasks. Yuan3.0 Ultra refines the training mechanism on top of the RAPO framework from Yuan3.0 Flash: correct samples with fewer reflection steps receive higher rewards, while incorrect samples with more reflection steps incur heavier penalties. The improved mechanism yields a **16.33%** improvement in training accuracy and a **14.38%** reduction in output token length.
 
