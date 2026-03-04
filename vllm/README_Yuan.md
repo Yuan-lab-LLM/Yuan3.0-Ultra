@@ -30,16 +30,16 @@ docker run --gpus all --privileged --ulimit stack=68719476736 --shm-size=1000G -
 docker exec -it your_name bash
 ```
 
-**3.2 Deployment service **
+**3.2  Deployment service**
 Yuan3.0 Ultra Model just support vLLm V1.   
 For deployment, we suggest using tensor parallelism combined with pipeline parallelism on 2 nodes.   
-Please refer to the tutorial for starting the ray service.[this](./examples/online_serving/multi-node-serving.sh)
+Please refer to the tutorial [multi-node-serving](./examples/online_serving/multi-node-serving.sh) for starting the ray service.
 ```bash
 python -m vllm.entrypoints.openai.api_server --model=/path/Yuan3.0-Ultra-int4 --port 8100 --gpu-memory-utilization 0.9 \
  --tensor-parallel-size 4 --pipeline-parallel-size 4 --trust-remote-code --allowed-local-media-path "/path/images"
 ```
 
-**3.3 Client request **
+**3.3  Client request**
 ```python
 from openai import OpenAI
 

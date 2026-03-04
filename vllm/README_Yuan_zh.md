@@ -28,7 +28,7 @@ docker exec -it your_name bash
 
 Yuan3.0 Ultra Model 仅支持 vLLm V1架构。  
 我们建议使用2个节点，张量和流水并行组合的方式部署。  
-ray服务启动请参考教程[this](./examples/online_serving/multi-node-serving.sh) 
+多节点ray服务启动命令请参考[多节点服务](./examples/online_serving/multi-node-serving.sh)教程.
 ```bash
 python -m vllm.entrypoints.openai.api_server --model=/path/Yuan3.0-Ultra-int4 --port 8100 --gpu-memory-utilization 0.9 \
  --tensor-parallel-size 4 --pipeline-parallel-size 4 --trust-remote-code --allowed-local-media-path "/path/images"
