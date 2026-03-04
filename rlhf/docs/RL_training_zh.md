@@ -4,7 +4,7 @@
 
 本文档提供了 Yuan3.0 Ultra 模型的 Decoupled Advantage Policy Optimization (DAPO) 强化学习说明。
 
-Yuan3.0 Ultra 强化学习训练核心采用 Decoupled Advantage Policy Optimization (DAPO) 框架，同时支持 GSPO（General-Sum Preference Optimization）、SAPO（Strategy-Aware Preference Optimization）等多种偏好优化策略，可灵活适配不同长度规模的训练数据（4K/16K），并提供完善的超长输入处理机制。
+Yuan3.0 Ultra 强化学习训练核心采用 Decoupled Advantage Policy Optimization (DAPO) 框架，同时支持 GSPO（General-Sum Preference Optimization）、SAPO（Strategy-Aware Preference Optimization）等多种偏好优化策略，并可灵活适配不同长度规模的训练数据。
 
 ## 二、使用方法
 
@@ -33,7 +33,7 @@ bash recipe/dapo/run_dapo_yuanvl_megatron_1020B.sh
 
 | 环境变量 | 类型 | 说明 |
 |---------|------|------|
-| `MODEL_PATH` | 字符串 | 预训练模型文件的存放路径 |
+| `MODEL_PATH` | 字符串 | 训练基座模型文件的存放路径 |
 | `TRAIN_16K_FILE` | 字符串 | 16K长度训练数据集的文件路径 |
 | `TRAIN_4K_FILE` | 字符串 | 4K长度训练数据集的文件路径 |
 | `CKPTS_DIR` | 字符串 | 训练过程中checkpoints文件的保存目录 |
@@ -82,15 +82,15 @@ loss_agg_mode="token-mean"
 
 
 ## 五、模型转换为HF格式
-### 5.1 文件补齐
-先将Yuan3.0-Ultra/rlhf/verl/tests/convert/目录下的所有文件拷贝到训练模型路径actor/huggingface目录
+### 5.1 配置补齐
+将Yuan3.0-Ultra/rlhf/verl/tests/convert/目录下的所有文件拷贝到训练模型路径actor/huggingface目录。
 
 ### 5.2 脚本修改与执行
-修改Yuan3.0-Ultra/rlhf/verl/tools/merge_1020B.sh脚本中的三个参数，然后执行
+修改Yuan3.0-Ultra/rlhf/verl/tools/merge_1020B.sh脚本中的参数并运行：
     ```bash
-    --local_dir 训练模型路径 写到actor那级
-    --target_dir 输出路径 
-    --vit_dir vit路径
+    --local_dir 训练模型路径
+    --target_dir 模型输出路径 
+    --vit_dir vit模型路径
     ```
     ```bash
     # 执行转换脚本
