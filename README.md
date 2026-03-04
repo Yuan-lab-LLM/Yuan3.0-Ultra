@@ -194,18 +194,18 @@ Summarization generation is a core requirement for historical information compre
 
 ## 6. Quick Start
 
-**6.1 Yuan3.0 Flash Inference**
+**6.1 Yuan3.0 Ultra Inference**
 
-Yuan3.0 Flash supports bfloat16 and int4 quantized models. For specific usage methods, please refer to [QuickStart](vllm/README_Yuan.md)
+Yuan3.0 Ultra supports bfloat16 and int4 quantized models. For specific usage methods, please refer to [QuickStart](vllm/README_Yuan.md)
 
 
 **6.2 Data Preprocessing**
 
 We provide data preprocessing scripts. Please refer to the data preprocessing [documentation](rlhf/docs/data_process.md).
 
-**6.3 Model Fine-tuning Training**
+**6.3 Model Training**
 
-We provide supervised fine-tuning scripts and reinforcement learning workflows for the Yuan3.0 Flash model. Please refer to the fine-tuning training [documentation](rlhf/docs/instruct_tuning.md) and reinforcement learning [documentation](rlhf/docs/RL_training.md).
+We provide supervised fine-tuning scripts and reinforcement learning workflows for the Yuan3.0 Ultra model. Please refer to the fine-tuning training [documentation](rlhf/docs/instruct_tuning.md) and reinforcement learning [documentation](rlhf/docs/RL_training.md).
 
 
 
