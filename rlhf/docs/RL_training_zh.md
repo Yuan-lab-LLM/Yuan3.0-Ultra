@@ -18,7 +18,7 @@ bash config.sh host
 
 ### 步骤2：启动 RAPO 训练
 ```bash
-# 执行1020B规模YuanVL模型的RAPO训练脚本
+# 执行Yuan3.0 Ultra模型的RAPO训练
 cd Yuan3.0-Ultra/rlhf/verl
 bash recipe/dapo/run_dapo_yuanvl_megatron_1020B.sh
 ```
