@@ -8,7 +8,7 @@
 <div align="center" style="line-height: 1;">
   <a href="https://huggingface.co/YuanLabAI"><img alt="Hugging Face"
     src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Yuan3.0-ffc107?color=ffc107&logoColor=white"/></a>
-  <a href="https://www.modelscope.cn/profile/Yuanlab"><img alt="ModelScope"
+  <a href="https://www.modelscope.cn/profile/YuanLabAI"><img alt="ModelScope"
     src="https://img.shields.io/badge/💾%20ModelScope-Yuan3.0-6b4fbb?color=6b4fbb&logoColor=white"/></a>
   <a href="https://x.com/YuanAI_Lab"><img alt="Twitter Follow"
     src="https://img.shields.io/badge/Twitter-Yuanlabai-white?logo=x&logoColor=white"/></a>
@@ -217,10 +217,10 @@ Spider 1.0 和 BIRD 是 Text-to-SQL 领域的两项权威基准。Yuan3.0 Ultra 
 
 | 模型 | Spider 1.0 (Acc. %) | BIRD (Acc. %) |
 |---|:---:|:---:|
-| DeepSeek-V3.2 | 80.70 | 38.90 |
-| Qwen3.5-397B-A17B | 82.40 | 39.60 |
-| Kimi K2.5 | 82.70 | **43.50** |
-| **Yuan3.0 Ultra** | **83.90** | 39.20 |
+| DeepSeek-V3.2 | 80.7 | 38.9 |
+| Qwen3.5-397B-A17B | 82.4 | 39.6 |
+| Kimi K2.5 | 82.70 | **43.5** |
+| **Yuan3.0 Ultra** | **83.9** | 39.2 |
 
 
 
