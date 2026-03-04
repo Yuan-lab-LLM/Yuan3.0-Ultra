@@ -31,6 +31,7 @@ docker exec -it your_name bash
 ```
 
 **3.2  Deployment service**
+
 Yuan3.0 Ultra Model just support vLLm V1.   
 For deployment, we suggest using tensor parallelism combined with pipeline parallelism on 2 nodes.   
 Please refer to the tutorial [multi-node-serving](./examples/online_serving/multi-node-serving.sh) for starting the ray service.
@@ -40,6 +41,7 @@ python -m vllm.entrypoints.openai.api_server --model=/path/Yuan3.0-Ultra-int4 --
 ```
 
 **3.3  Client request**
+
 ```python
 from openai import OpenAI
 
