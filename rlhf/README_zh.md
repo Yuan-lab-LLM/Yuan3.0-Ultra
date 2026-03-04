@@ -44,18 +44,18 @@ docker exec -it your_name bash
 
 ### 数据处理
 
-项目提供了数据处理的脚本，参考[数据预处理说明文档](./docs/data_process_zh.md).
+项目提供了数据处理的脚本，参考[源3.0数据处理说明文档](./docs/data_process_zh.md).
 
 ### 模型微调
 
-微调流程请参考[源3.0 指令微调示例](./docs/instruct_tuning_zh.md)。
+微调流程请参考[源3.0指令微调说明文档](./docs/instruct_tuning_zh.md)。
 
 ### 强化学习
-强化学习流程请参考[强化学习说明文档](./docs/RL_training_zh.md)。
+强化学习流程请参考[源3.0强化学习训练说明文档](./docs/RL_training_zh.md)。
 
 
 ### 推理服务
-推理部署请参考[部署文档](../vllm/README_Yuan_zh.md)
+推理部署请参考[源3.0推理服务部署说明文档](../vllm/README_Yuan_zh.md)
 
 ### 联系我们
 
