@@ -10,7 +10,6 @@ Yuan3.0 Ultra 强化学习训练核心采用 Decoupled Advantage Policy Optimiza
 
 ### 步骤1：启动 Ray 集群
 ```bash
-# 进入verl模块目录
 # 启动ray服务
 # start head node
 RAY_USE_IP_ADDRESS=True ray start --head --num-cpus=64 --num-gpus=8 --port=6400 --memory=873741824000 --dashboard-host 0.0.0.0  --node-ip-address=${your_head_node_ip}
@@ -26,7 +25,7 @@ cd Yuan3.0-Ultra/rlhf/verl
 bash recipe/dapo/run_dapo_yuanvl_megatron_1020B.sh
 ```
 
-## 参数配置
+## 三、参数配置
 
 ### 3.1 环境变量配置
 训练前需根据实际路径配置以下环境变量，用于指定数据、模型和 checkpoint 存储位置：
