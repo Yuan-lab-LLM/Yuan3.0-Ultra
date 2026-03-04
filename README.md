@@ -221,12 +221,12 @@ Spider 1.0 and BIRD are two major benchmarks in the Text-to-SQL domain. Yuan3.0 
 
 ### 6.1 Yuan3.0 Ultra Inference
 
-Yuan3.0 Ultra supports both bfloat16 and int4 quantized models. For usage details, please refer to [QuickStart](vllm/README_Yuan_zh.md).
+Yuan3.0 Ultra supports both bfloat16 and int4 quantized models. For usage details, please refer to [QuickStart](vllm/README_Yuan.md).
 
 
 ### 6.2 Yuan3.0 Ultra Training
 
-We provide supervised fine-tuning scripts and reinforcement learning scripts for Yuan3.0 Ultra. Please refer to the fine-tuning training [documentation](rlhf/docs/instruct_tuning_zh.md) and reinforcement learning [documentation](rlhf/docs/RL_training_zh.md).
+We provide supervised fine-tuning scripts and reinforcement learning scripts for Yuan3.0 Ultra. Please refer to the fine-tuning training [documentation](rlhf/docs/instruct_tuning.md) and reinforcement learning [documentation](rlhf/docs/RL_training.md).
 
 
 
