@@ -1,7 +1,7 @@
 ##  1. Docker image
 
 
-We strongly recommend using the latest release of docker images of Yuan3.0 Ultra. You can launch an instance of the Yuan 3.0 Ultra container with the following Docker commands:
+We recommend using the latest release of docker images of Yuan3.0 Ultra. You can launch an instance of the Yuan 3.0 Ultra container with the following Docker commands:
 
 ```bash
 docker pull yuanlabai/vllm:v0.11.0
@@ -10,7 +10,7 @@ docker pull yuanlabai/vllm:v0.11.0
 
 ##  2. Install (optional)
 
-Install vLLM from source:
+Install vLLM for Yuan3.0 Ultra model from source:
 ```
 git clone https://github.com/Yuan-lab-LLM/Yuan3.0-Ultra.git
 cd Yuan3.0-Ultra/vllm
@@ -32,16 +32,14 @@ docker exec -it your_name bash
 
 **3.2  Deployment service**
 
-Yuan3.0 Ultra Model just support vLLm V1.   
-For deployment, we suggest using tensor parallelism combined with pipeline parallelism on 2 nodes.   
-Please refer to the tutorial [multi-node-serving](./examples/online_serving/multi-node-serving.sh) for starting the ray service.
+Yuan3.0 Ultra Model just support vLLm V1. Please refer to the tutorial [multi-node-serving](./examples/online_serving/multi-node-serving.sh) for starting the ray service.
 ```bash
 python -m vllm.entrypoints.openai.api_server --model=/path/Yuan3.0-Ultra-int4 --port 8100 --gpu-memory-utilization 0.9 \
  --tensor-parallel-size 4 --pipeline-parallel-size 4 --trust-remote-code --allowed-local-media-path "/path/images"
 ```
 > **Note 1**: You might also need to setup [network setup](./docs/usage/troubleshooting.md:#L10).   
-> **Note 2**: For the int4 model, we deploy the service using 2 nodes (16\*A800), with parallel configuration of tensor-parallel-size=4 and pipeline-parallel-size=4.   
-> **Note 3**: For the bfloat16 model, we deploy the service using 6 nodes (48\*A800), with parallel configuration of tensor-parallel-size=4 and pipeline-parallel-size=12.   
+> **Note 2**: For the int4 model, the parallel configuration of tensor-parallel-size=4 and pipeline-parallel-size=4 is suggested.   
+> **Note 3**: For the bfloat16 model,  the parallel configuration of tensor-parallel-size=4 and pipeline-parallel-size=12 is suggested. 
 
 **3.3  Client request**
 

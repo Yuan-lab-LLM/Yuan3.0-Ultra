@@ -1,8 +1,6 @@
-
-
 <div align="center">
 <h1>
-  Yuan3.0 Ultra：A Trillion-Parameter Multimodal Large Model
+  Yuan3.0 Ultra Multimodal Foundation Large Language Model
 </h1>
 </div>
 
@@ -10,16 +8,11 @@
 <div align="center" style="line-height: 1;">
   <a href="https://huggingface.co/YuanLabAI"><img alt="Hugging Face"
     src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Yuan3.0-ffc107?color=ffc107&logoColor=white"/></a>
-  <a href="https://www.modelscope.cn/profile/Yuanlab"><img alt="ModelScope"
+  <a href="https://www.modelscope.cn/profile/YuanLabAI"><img alt="ModelScope"
     src="https://img.shields.io/badge/💾%20ModelScope-Yuan3.0-6b4fbb?color=6b4fbb&logoColor=white"/></a>
   <a href="https://x.com/YuanAI_Lab"><img alt="Twitter Follow"
     src="https://img.shields.io/badge/Twitter-Yuanlabai-white?logo=x&logoColor=white"/></a>
-  <a href="https://arxiv.org/abs/2601.01718"><img alt="arXiv"
-    src="https://img.shields.io/badge/arXiv-Yuan3.0%20Paper-b31b1b?logo=arxiv&logoColor=white"/></a>
-  </a>
 
-
-  
 </div>
 
 
@@ -36,180 +29,203 @@
 
 
 
-## Latest Updates 🎉🎉
+## Recent Updates 🎉🎉
 
-* **[2025-12-30]** **Released Yuan 3.0-40B Multimodal Large Language Model, a high-performance model for enterprise-grade application scenarios: Yuan3.0 Flash**
-
-
+* **[2026-03-04]** **Yuan3.0 Ultra Multimodal Foundation Large Model is released — a trillion-parameter flagship model designed for enterprise-grade scenarios.**
 
 ## 1. Introduction
 
-Yuan 3.0 Flash, developed by the **YuanLab.ai team**, is a **40B parameter multimodal foundation model** that employs a Mixture of Experts (MoE) architecture, activating only approximately **3.7B parameters** per inference. Through innovative reinforcement learning training methods (RAPO), it significantly reduces inference token consumption while improving reasoning accuracy, exploring the innovative path of "less computation, higher intelligence" for large language models. We have also released the <a href="https://arxiv.org/abs/2601.01718" target="_blank">**technical report**</a> for the Yuan3.0 model, where you can find more detailed technical information and evaluation results.
+Yuan3.0 Ultra employs a unified multimodal model architecture, integrating a vision encoder, a language backbone, and a multimodal alignment module to enabling synergistic modeling of visual and linguistic information. The language backbone is built on a Mixture-of-Experts (MoE) architecture, featuring 103 Transformer layers. The model was pre-trained from scratch original with 1515B parameters. Through the innovative Layer-Adaptive Expert Pruning (LAEP) algorithm, the parameter count was reduced to 1010B during pre-training, improving pre-training efficiency by 49%. The activated parameter count for Yuan3.0 Ultra is 68.8B. Furthermore, the model incorporates a Localized Filtering-based Attention (LFA) mechanism, which effectively enhances the modeling of semantic relationships and achieves higher accuracy compared to classical attention architectures.
 
-<div align=center> <img src=https://github.com/Yuan-lab-LLM/Yuan3.0/blob/main/docs/Yuan3.0-architecture.png width=80% />
+Yuan3.0 Ultra enhances the Reflection Inhibition Reward Mechanism (RIRM) proposed in <a href="https://github.com/Yuan-lab-LLM/Yuan3.0" target="_blank">**Yuan3.0 Flash**</a>. By incorporating reward constraints based on the number of reflection steps, the model actively reduces ineffective reflections after arriving at the "first correct answer," while retaining the necessary reasoning depth for complex problems. This approach effectively mitigates the "overthinking" phenomenon in fast-thinking reinforcement learning. Training results demonstrate that under this controlled fast-thinking strategy, the model’s accuracy improves significantly, while the number of tokens generated during reasoning continually decreases—achieving simultaneous gains in both accuracy and computational efficiency.
 
-Fig.1: Yuan3.0 Multimodal Large Language Model Architecture
+Additionally, the <a href="./Docs/Yuan3.0_Ultra Paper.pdf">**technical report**</a> for Yuan3.0 Ultra has been released, which provides more detailed technical specifications and evaluation results.
+
+<div align=center> <img src=https://github.com/Yuan-lab-LLM/Yuan3.0-Ultra/blob/main/Docs/Yuan3.0-Ultra-architecture.png width=80% />
+
+Fig.1: Yuan3.0 Ultra Multimodal Architecture
 
 </div>
 
-### Core Features
+## Core Features
 
-- 🚀 **Efficient Inference**: Reduces inference token consumption by up to 75%, significantly lowering costs
-- 🎯 **Enterprise-Grade Optimization**: Deeply optimized for enterprise scenarios such as RAG, document understanding, and table analysis
-- 🎨 **Multimodal Support**: Supports text, image, table, document and other multimodal inputs
-- 📚 **Long Context**: Supports 128K context length, achieving 100% accuracy in "Needle in a Haystack" tests
-- ⚡ **Ready-to-Use Intelligence**: Default inference mode meets the needs of most enterprise scenarios
+🚀 **Layer-Adaptive Expert Pruning (LAEP)**: The innovative Layer-Adaptive Expert Pruning (LAEP) algorithm is a novel method developed specifically for pre-training Mixture-of-Experts (MoE) Large Language Models. It improves pre-training efficiency by 49% and reduces the total parameter count by 33% (from 1515B to 1010B).
+
+
+⚡ **Fast-Thinking Reinforcement Learning（RAPO）**: Enhanced the Reflection Inhibition Reward Mechanism (RIRM) introduced in Yuan3.0 Flash and integrated it into a fast-thinking reinforcement learning paradigm for post-training. The improved RIRM yields a 16.33% gain in training accuracy and reduces output token length by 14.38%.
+
+
+🎯 **Deep Optimization for Enterprise Scenarios**: Yuan3.0 Ultra is designed from the ground up with its capabilities optimized for enterprise scenarios. It is not merely a powerful multimodal language model, but also serves as a robust "core engine" for driving complex intelligent agents. The model shows consistent advantages across a wide range of enterprise scenarios benchmarks:
+* Retrieval-Augmented Generation (RAG): Yuan3.0 Ultra achieves leading accuracy on benchmarks like ChatRAG and DocMatix, capable of precisely locating and utilizing enterprise private domain knowledge to provide reliable evidence for responses.
+* Complex Table and Document Understanding: On multi-task benchmarks such as MMTab, Yuan3.0 Ultra demonstrates deep analytical capabilities for structured data and can readily handle complex documents like financial reports and approval forms.
+* High-Quality Summarization: On SummEval, Yuan3.0 Ultra can generate summaries that are both faithful to the source text and highly concise, ensuring accurate and efficient information delivery.
+* Agent Tool Invocation: Yuan3.0 Ultra demonstrates proficiency in multi-step tool calling and collaboration on the BFCL benchmark, establishing a solid foundation for automating complex workflows.
+* Database Query Statement Generation (Text-to-SQL): Yuan3.0 Ultra demonstrates excellent performance on the Spider 1.0 and BIRD benchmarks, delivering robust support for precise querying in enterprise scenarios that involve structured data.
+
 
 ## 2. Performance
 
-Yuan 3.0 Flash outperforms GPT-5.1 in enterprise-grade RAG, multimodal retrieval, table understanding, summary generation and other tasks. With 40B parameters, it achieves the reasoning accuracy of 235B/671B models while reducing token consumption by 50%-75%, providing enterprises with high-performance, low-cost large language model solutions.
+Yuan3.0 Ultra delivers outstanding performance on retrieval-augmented generation, multimodal document understanding, tabular data analysis, content summarization, and tool invocation tasks, providing core capability support for enterprises building document-driven and data-driven Agent applications. Detailed evaluation results are presented in Section 5.
 
-<div align=center> <img src=https://github.com/Yuan-lab-LLM/Yuan3.0/blob/main/docs/Yuan3.0-benchmarks.png width=80% />
+<div align=center> <img src=https://github.com/Yuan-lab-LLM/Yuan3.0-Ultra/blob/main/Docs/Yuan3.0-Ultra-benchmarks.png width=80% />
 
-Fig.2: Yuan3.0 Flash Evaluation Results
+Fig.2: Benchmark Evaluation Results of Yuan3.0 Ultra
+
+
 
 </div>
 
+## 3. Core Technologies
 
+### Layer-Adaptive Expert Pruning (LAEP)
 
-## 3. Core Technology
+The evolution of expert load during large model pre-training can be divided into two phases:
+* **Phase 1 — Initial Transition Phase**: Occurring at the early stage of model pre-training, where expert loads exhibit substantial volatility inherited from random initialization, with the number of tokens routed to the same expert potentially varying by orders of magnitude;
+* **Phase 2 — Stable Phase**: Expert token loads across experts become temporally stable, with per-expert token counts exhibiting only relatively minor fluctuations;
 
-### RAPO Reinforcement Learning Algorithm
+In the stable phase of training, expert token loads are highly imbalanced: a small number of experts carry a large share of computation while some experts remain persistently underutilized, leading to wasted computational resources. The disparity between the highest- and lowest-load experts in the stable phase can reach nearly 500×.
 
-The innovative **Reflection-aware Adaptive Policy Optimization (RAPO)** algorithm, through the Reflection Inhibition Reward Mechanism (RIRM):
+LAEP adaptively prunes low-load experts layer by layer according to the token distribution in each layer during the stable phase, and proposes an expert rearrangement algorithm that greedily rearranges the remaining experts across computing devices to achieve balanced load. Yuan3.0 Ultra begins pre-training with 1515B parameters and applies LAEP during the stable phase, achieving 33.3% parameter reduction and a 49% improvement in pre-training efficiency.
 
-- ✅ Identifies the key point where the correct answer is first obtained
-- 🎯 Suppresses subsequent redundant reasoning behavior
-- 📉 Improves accuracy while reducing inference token count by approximately 75%
+### Revised Reflection Inhibition Reward Mechanism (RIRM)
 
-| Training Method | AIME 2024 Accuracy | Avg Output Length | MATH-500 Accuracy | Avg Output Length |
-|---------|------------------|--------------|-----------------|--------------|
-| Yuan3.0 Flash (40B) SFT | 31.45% | 13,656 tokens | 83.20% | 3,362 tokens |
-| RL+DAPO length-penalty | 46.35% | 13,781 tokens | 89.06% | 3,974 tokens |
-| **RL+RIRM** | **47.92%** | **7,505 tokens** | **89.47%** | **1,777 tokens** |
-
-
-
+During the Fast-thinking RL phase, models tend to produce excessive reflection steps on mathematical and scientific reasoning tasks. Yuan3.0 Ultra refines the training mechanism on top of the RAPO framework from Yuan3.0 Flash: correct samples with fewer reflection steps receive higher rewards, while incorrect samples with more reflection steps incur heavier penalties. The improved mechanism yields a **16.33%** improvement in training accuracy and a **14.38%** reduction in output token length.
 
 
 ## 4. Model Download
 
 **We provide download links for multiple model formats:**
 
-|    Model     |   Parameters  |  Precision  |   Sequence Length  |   Model Format   |         Download Link         |
+|    Model     |   Parameters  |  Precision  |   Sequence Length  |   Format   |         Download         |
 | :----------: | :------: | :------: | :------: | :-------: |:---------------------------: |
-| Yuan3.0 Flash |    40B    |  16bit    |    128K    |    HuggingFace    | [ModelScope]( https://modelscope.cn/models/Yuanlab/Yuan3.0-Flash) \| [HuggingFace]( https://huggingface.co/YuanLabAI/Yuan3.0-Flash) \|  [WiseModel]( https://www.wisemodel.cn/models/YuanLabAI/Yuan3.0-Flash)
-| Yuan3.0 Flash 4bit |    40B   |  4bit     |    128K    |    HuggingFace    | [ModelScope]( https://modelscope.cn/models/Yuanlab/Yuan3.0-Flash-int4) \| [HuggingFace]( https://huggingface.co/YuanLabAI/Yuan3.0-Flash-4bit) \|  [WiseModel]( https://www.wisemodel.cn/models/YuanLab/Yuan3.0-Flash-4bit)
-
-
+| Yuan3.0 Ultra |    1.01T   |  16bit     |    64K    |    HuggingFace    | [ModelScope]( https://modelscope.cn/models/YuanLabAI/Yuan3.0-Ultra ) \| [HuggingFace]( https://huggingface.co/YuanLabAI/Yuan3.0-Ultra ) \|  [WiseModel]( https://www.wisemodel.cn/models/YuanLabAI/Yuan3.0-Ultra )
+| Yuan3.0 Ultra int4 |    1.01T   |  4bit     |    64K    |    HuggingFace    | [ModelScope]( https://modelscope.cn/models/YuanLabAI/Yuan3.0-Ultra-int4 ) \| [HuggingFace]( https://huggingface.co/YuanLabAI/Yuan3.0-Ultra-int4 ) \|  [WiseModel]( https://www.wisemodel.cn/models/YuanLabAI/Yuan3.0-Ultra-int4 )
 
 
 
 ## 5. Evaluation Results
 
-**5.1 Text-based RAG Evaluation: ChatRAG** 🏆
+Yuan3.0 Ultra achieves leading performance across multiple enterprise-level core benchmarks.
 
-Yuan 3.0 Flash leads DeepSeek-V3, DeepSeek-R1 and other large language models in average accuracy across 10 evaluation tasks in the industry-standard RAG benchmark ChatRAG.
+### 5.1 Multimodal RAG Evaluation: Docmatix 🏆
 
-**Model Average Accuracy Comparison**
+Docmatix evaluates a model's comprehensive ability to retrieve, associate, and accurately answer questions across multiple modalities (text, tables, images) within multi-page, complex documents.
 
-
-| Models | Avg All | D2D | QuAC | QReCC | CoQA | DoQA | CFQA | SQA | TCQA | HDial | INSCIT |
-|--------|---------|-----|------|-------|------|------|------|-----|------|-------|--------|
-| **DeepSeek-V3** | 50.47 | 31.59 | 28.86 | 49.31 | 76.98 | 26.11 | 83.49 | 82.13 | 46.69 | 47.43 | 32.08 |
-| **DeepSeek-V3.23** | 49.67 | 34.30 | 28.09 | 49.97 | 77.29 | 29.46 | 72.85 | 79.48 | 44.64 | 47.99 | 32.64 |  
-| **OpenAI GPT-4o** | 50.54 | 32.76 | 26.56 | 49.30 | 76.11 | 28.78 | 81.85 | 81.14 | 49.75 | 41.29 | 26.69 |
-| **OpenAI GPT-o3** | 44.06 | 23.05 | 20.82 | 40.42 | 69.42 | 18.56 | 67.75 | 86.71 | 45.85 | 41.29 | 26.69 |
-| **DeepSeek-R1** | 39.42 | 21.46 | 22.23 | 42.41 | 62.53 | 24.68 | 81.48 | 82.06 | 30.74 | 37.97 | 28.68 |
-| **OpenAI GPT-5.1** | 46.10 | 28.24 | 23.16 | 45.43 | 68.84 | 20.88 | 73.05 | 81.32 | 44.70 | 45.39 | 29.95 |
-| **Yuan3.0 Flash** | **64.47** | 49.82 | 53.79 | 57.08 | 90.93 | 59.99 | 74.40 | 87.52 | 66.31 | 68.45 | 36.40 |
-
-
-
-*<small>
-• **Long Context Tests** (D2D, QuAC, QReCC)   
-• **Wikipedia Retrieval Tests** (TCQA, INSCIT)   
-• **Short Text & Structured Context Tests** (CoQA, DoQA, CFQA, SQA, HDial)
-</small>*
+| Model | Accuracy (%) |
+|---|:---:|
+| GPT-4o | 56.8 |
+| o3 | 45.6 |
+| GPT-5.1 | 48.5 |
+| GPT-5.2 | 48.4 |
+| Gemini 3.1 Pro | 35.3 |
+| Claude Opus 4.6 | 46.2 |
+| Kimi K2.5 | 36.9 |
+| **Yuan3.0 Ultra** | **67.4** |
 
 ---
 
+### 5.2 Text RAG Evaluation: ChatRAG 🏆
 
-**5.2 Multimodal RAG Evaluation: Docmatix** 🏆
+ChatRAG comprises 10 tasks, covering long-context retrieval (D2D, QuAC, QReCC), short-context and structured retrieval (CoQA, DoQA, CFQA, SQA, HDial), and Wikipedia-based retrieval (TCQA, INSCIT). Yuan3.0 Ultra achieves an average accuracy of **68.2%**, ranking first on 9 out of 10 tasks.
 
-Yuan3.0 Flash leads Claude3.5, OpenAI GPT-4o, o3 and other models in the multimodal RAG benchmark Docmatix, with accuracy performance only second to GPT-5.1.
-
-**Model Average Accuracy Comparison**
-
-| Models | Avg. |
-|--------|:---------:|
-| **Qwen2.5-VL-72B-Instruct** | 59.75 |
-| **InternVL3-78B** | 42.99 |
-| **Claude3.5-Sonnet** | 42.55 |
-| **OpenAI GPT-4o** | 56.79 |
-| **OpenAI GPT-o3** | 45.57 |
-| **OpenAI GPT-4V** | 60.10 |
-| **OpenAI GPT-5.1** | 48.52 |
-| **Yuan3.0 Flash** | **65.07** |
-
-
-*<small>**Docmatix** - Evaluates the model's ability to retrieve information, correlate, and accurately answer questions across text, tables, images and other multimodal content in multi-page complex documents.</small>*
+| Model | Avg. | D2D | QuAC | QReCC | CoQA | DoQA | CFQA | SQA | TCQA | HDial | INSCIT |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| DeepSeek-V3 | 50.5 | 31.6 | 28.9 | 49.3 | 77.0 | 26.1 | 83.5 | 82.1 | 46.7 | 47.4 | 32.1 |
+| GPT-4o | 50.5 | 32.8 | 26.6 | 49.3 | 76.1 | 28.8 | 81.9 | 81.1 | 49.8 | 41.3 | 26.7 |
+| o3 | 44.1 | 23.1 | 20.8 | 40.4 | 69.4 | 18.6 | 67.8 | 86.7 | 45.9 | 41.3 | 26.7 |
+| DeepSeek-R1 | 39.4 | 21.5 | 22.2 | 42.4 | 62.5 | 24.7 | 81.5 | 82.1 | 30.7 | 38.0 | 28.7 |
+| GPT-5.1 | 46.1 | 28.2 | 23.2 | 45.4 | 68.8 | 20.9 | 73.1 | 81.3 | 44.7 | 45.4 | 30.0 |
+| GPT-5.2 | 45.6 | 30.2 | 23.1 | 47.0 | 64.8 | 25.3 | 72.3 | 79.1 | 38.3 | 45.3 | 30.9 |
+| Gemini 3.1 Pro | 49.7 | 33.1 | 27.3 | 47.0 | 73.5 | 34.2 | 75.7 | 85.5 | 42.4 | 48.2 | 30.3 |
+| Claude Opus 4.6 | 52.9 | 35.3 | 26.6 | 49.4 | 76.4 | 37.3 | **86.5** | 85.5 | 50.2 | 48.9 | 33.2 |
+| Kimi K2.5 | 53.6 | 34.6 | 30.9 | 49.9 | 82.5 | 35.8 | 82.3 | 83.6 | 50.8 | 51.1 | 34.4 |
+| **Yuan3.0 Ultra** | **68.2** | **55.8** | **54.5** | **57.3** | **94.6** | **63.4** | 79.8 | **91.0** | **72.4** | **72.9** | **40.0** |
 
 ---
 
-**5.3 Multimodal Complex Table Content Analysis Evaluation: MMTab** 🏆
+### 5.3 Multimodal Complex Table Understanding Evaluation: MMTab
 
-Multimodal table understanding is an important application scenario in enterprise office automation. Yuan3.0 Flash achieves leading average accuracy on 15 evaluation tasks in the industry-standard multimodal complex table understanding benchmark MMTab, surpassing OpenAI's GPT-5.1.
+MMTab spans 15 evaluation sets, covering task types including table question answering, fact checking, and long-context table processing. Yuan3.0 Ultra surpasses Claude Opus 4.6 and Gemini 3.1 Pro with an average accuracy of **62.3%**, demonstrating comprehensive and well-balanced multimodal table processing capability.
 
-**Model Average Accuracy Comparison**
+| Model | Avg. | TABMWP | WTQ | HiTab | TAT-QA | FeTaQA | TabFact | InfoTabs |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| GPT-5.1 | 55.2 | 65.0 | 60.8 | **77.8** | 61.4 | 8.7 | 52.8 | 64.3 |
+| GPT-5.2 | 37.3 | 67.2 | 69.8 | 15.8 | 28.0 | 6.2 | 63.5 | 69.3 |
+| Gemini 3.1 Pro | 45.1 | 80.1 | **79.6** | 48.3 | 50.5 | 9.6 | 71.1 | 74.4 |
+| Claude Opus 4.6 | 39.8 | 67.6 | 76.0 | 44.1 | 44.5 | 12.0 | 30.7 | 59.6 |
+| Kimi K2.5 | **66.2** | **95.9** | 79.3 | 63.9 | 62.4 | 7.4 | **90.6** | 81.8 |
+| **Yuan3.0 Ultra** | 62.3 | 91.8 | 77.9 | 67.6 | **74.9** | **39.2** | 90.4 | **89.7** |
 
-| Models | Avg. | TABMWP | WTQ | WTQ | HiTab | TAT-QA | FeTaQAU | TabFact | InfoTabs | HiTab_T2T | Rotowire | WikiBIO | TSD_Row | TSD_Col | TCE | TCL | MCD | RCE |
-|--------|:----:|:------:|:---:|:---:|:-----:|:------:|:-------:|:-------:|:--------:|:---------:|:--------:|:-------:|:-------:|:-------:|:---:|:---:|:---:|:---:|
-| **Zhipu GLM-4.5V** | 52.00 | 88.21 | 77.42 | 51.52 | 62.69 | 5.25 | 89.44 | 79.48 | 5.17 | 4.48 | 2.69 | 47.40 | 89.70 | 52.74 | 50.84 | 43.47 | 50.77 | 82.79 |
-| **OpenAI GPT-4V** | 29.90 | 60.50 | 48.00 | 27.50 | 32.50 | 11.04 | 45.50 | 65.60 | 2.98 | 4.23 | 1.94 | 19.00 | 38.00 | 14.36 | 27.91 | 3.50 | 48.52 | 57.14 |
-| **OpenAI GPT-5.1** | 55.15 | 64.95 | 60.77 | 77.77 | 61.37 | 8.70 | 52.81 | 64.30 | 44.16 | 17.81 | 11.95 | 96.60 | 62.10 | 86.43 | 44.66 | 72.46 | 53.58 | 57.20 |
-| **Yuan3.0 Flash** | 58.29 | 95.09 | 68.23 | 69.80 | 69.17 | 28.42 | 87.32 | 83.50 | 13.30 | 14.74 | 17.26 | 46.60 | 82.80 | 56.77 | 56.98 | 65.20 | 62.07 | 73.67 |
+
+*Full results across all 15 tasks are available in the technical report.*
+
+---
+
+### 5.4 Text Summarization Evaluation: SummEval 🏆
+
+SummEval comprehensively evaluates summarization quality from three dimensions: lexical overlap (ROUGE-1/2), semantic similarity (BERTScore), and factual consistency (SummaC), serving as an important reference for historical information compression capability in Agent applications. Yuan3.0 Ultra achieves an average accuracy of **62.8%**.
+
+| Model | Avg. | ROUGE-1 | ROUGE-2 | BERTScore | SummaC |
+|---|:---:|:---:|:---:|:---:|:---:|
+| DeepSeek-V3 | 59.3 | 25.5 | 9.2 | 86.3 | **68.2** |
+| DeepSeek-V3.2 | 51.4 | 33.3 | 11.9 | 85.6 | 41.8 |
+| GPT-4o | 46.5 | 25.0 | 8.9 | 85.9 | 32.5 |
+| GPT-5.1 | 49.4 | 27.5 | 10.2 | 84.6 | 40.5 |
+| GPT-5.2 | 48.6 | 30.3 | 10.7 | 84.9 | 36.4 |
+| Gemini 3.1 Pro | 48.5 | 32.4 | 11.4 | 85.4 | 34.3 |
+| Claude Opus 4.6 | 49.9 | 33.1 | 11.0 | 85.9 | 37.8 |
+| Kimi K2.5 | 49.8 | 32.3 | 11.3 | 85.4 | 38.2 |
+| **Yuan3.0 Ultra** | **62.8** | **59.1** | **41.0** | **91.1** | 45.4 |
 
 ---
 
-**5.4 Text Summarization Generation Evaluation: SummEval** 🏆
+### 5.5 Tool Invocation Evaluation: BFCL V3
 
-Summarization generation is a core requirement for historical information compression in intelligent agent applications. Yuan 3.0 achieves leading average accuracy in the industry-standard summarization generation benchmark SummEval across three major capabilities: lexical overlap, semantic similarity, and factual consistency, surpassing the DeepSeek-V3 large language model.
+BFCL V3 evaluates real-world tool invocation capability across dimensions including static function selection (Non-Live AST), dynamic real-time execution (Live AST), multi-turn context maintenance (Multi-turn), relevance detection (Relevance), and irrelevant call rejection (Irrelevance Detection). Yuan3.0 Ultra delivers balanced performance across all categories, achieving an average score of **67.8%**, with particular strength in Irrelevance Detection (86.0%).
 
-**Model Average Accuracy Comparison**
+| Model | Avg. | Non-Live AST | Live AST | Multi-turn | Relevance | Irrelevance |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| Qwen3-235B-A22B | 68.0 | 87.9 | 77.0 | 40.1 | **83.3** | 76.3 |
+| Claude-3.7-Sonnet | 58.6 | 41.3 | 78.4 | 48.4 | 72.2 | 81.4 |
+| GPT-5.2 | 60.6 | 80.9 | 76.2 | 24.6 | 72.2 | 79.7 |
+| Gemini 3.1 Pro | **78.8** | **91.5** | **84.9** | **60.3** | 61.1 | **88.2**  |
+| Claude Opus 4.6 | 74.9 | 88.2 | 78.9 | 59.8 | 61.1 | 78.0 |
+| Kimi K2.5 | 70.6 | 86.4 | 78.6 | 48.6 | 61.1 | 77.0 |
+| **Yuan3.0 Ultra** | 67.8 | 81.7 | 74.5 | 45.3 | 66.7 | 86.0 |
 
 
-| Models | Avg. | Lexical Overlap<br>ROUGE-1 | Lexical Overlap<br>ROUGE-2 | Semantic Similarity<br>BERTScore | Factual Consistency<br>SummaC |
-|--------|:---------:|:-----------:|:-----------:|:--------------:|:------------:|
-| **DeepSeek-V3** | 59.28 | 25.50 | 9.20 | 86.30 | 68.20 |
-| **DeepSeek-V3.2** | 51.36 | 33.30 | 11.92 | 85.61 | 41.76 |
-| **Gemini-2.0-Flash** | 45.35 | 24.80 | 8.70 | 85.70 | 29.50 |
-| **Claude-3.5-Sonnet** | 45.43 | 24.10 | 8.30 | 85.20 | 30.70 |
-| **OpenAI GPT-4o** | 46.53 | 25.00 | 8.90 | 85.90 | 32.50 |
-| **OpenAI GPT-5.1** | 49.44 | 27.48 | 10.16 | 84.63 | 40.50 |
-| **Yuan3.0 Flash** | **59.31** | 51.32 | 28.32 | 89.99 | 45.34 |
 
 
 ---
+
+### 5.6 Text-to-SQL Evaluation: Spider 1.0 & BIRD
+
+Spider 1.0 and BIRD are two major benchmarks in the Text-to-SQL domain. Yuan3.0 Ultra demonstrates strong performance on both evaluations.
+
+| Model | Spider 1.0 | BIRD  |
+|---|:---:|:---:|
+| Qwen3.5-397B-A17B | 82.4 | 39.6 |
+| DeepSeek-V3.2 | 80.7 | 38.9 |
+| Kimi K2.5 | 82.7 | **43.5** |
+| **Yuan3.0 Ultra** | **83.9** | 39.2 |
+
+
+
 
 ## 6. Quick Start
 
-**6.1 Yuan3.0 Ultra Inference**
+### 6.1 Yuan3.0 Ultra Inference
 
-Yuan3.0 Ultra supports bfloat16 and int4 quantized models. For specific usage methods, please refer to [QuickStart](vllm/README_Yuan.md)
+Yuan3.0 Ultra supports both bfloat16 and int4 quantized models. For usage details, please refer to [QuickStart](vllm/README_Yuan.md).
 
 
-**6.2 Data Preprocessing**
+### 6.2 Yuan3.0 Ultra Training
 
-We provide data preprocessing scripts. Please refer to the data preprocessing [documentation](rlhf/docs/data_process.md).
-
-**6.3 Model Training**
-
-We provide supervised fine-tuning scripts and reinforcement learning workflows for the Yuan3.0 Ultra model. Please refer to the fine-tuning training [documentation](rlhf/docs/instruct_tuning.md) and reinforcement learning [documentation](rlhf/docs/RL_training.md).
+We provide supervised fine-tuning scripts and reinforcement learning scripts for Yuan3.0 Ultra. Please refer to the fine-tuning training [documentation](rlhf/docs/instruct_tuning.md) and reinforcement learning [documentation](rlhf/docs/RL_training.md).
 
 
 
-## 7. License Agreement
-The use of Yuan 3.0 code and models must comply with the [《Yuan 3.0 Model License Agreement》](https://github.com/Yuan-lab-LLM/Yuan3.0?tab=License-1-ov-file). The Yuan 3.0 model supports commercial use without requiring authorization application. Please understand and comply with the agreement, and do not use the open-source model and code, as well as derivatives generated based on the open-source project, for any purpose that may bring harm to the country and society, or for any service that has not undergone security assessment and filing.
+## 7. License
+Use of Yuan 3.0 code and models must comply with the [Yuan 3.0 Model License Agreement](https://github.com/Yuan-lab-LLM/Yuan3.0?tab=License-1-ov-file). Yuan 3.0 models support commercial use and do not require an application for authorization. Please familiarize yourself with and adhere to the agreement. Do not use the open-source models, code, or any derivatives produced from this open-source project for any purposes that may cause harm to the nation or society, or for any services that have not undergone safety assessment and registration.
 
-Although we have taken measures to ensure the compliance and accuracy of the data during model training, due to the large number of model parameters and the influence of probabilistic randomness, we cannot guarantee the accuracy of the output content, and the model is easily misled by input instructions. This project does not assume responsibility for data security and public opinion risks caused by open-source models and code, or any risks and responsibilities arising from the model being misled, abused, disseminated, or improperly used. You will independently bear all risks and consequences arising from the use, copying, distribution, and modification of the model through using this open-source project.
+Although measures have been taken during training to ensure data compliance and accuracy to the best of our ability, given the enormous scale of model parameters and the influence of probabilistic randomness, we cannot guarantee the accuracy of generated outputs, and models are susceptible to being misled by input instructions. This project assumes no responsibility for data security risks, public opinion risks, or any risks and liabilities arising from the model being misled, misused, disseminated, or improperly exploited due to the use of open-source models and code. You shall bear full and sole responsibility for all risks and consequences arising from your use, copying, distribution, and modification of this open-source project.

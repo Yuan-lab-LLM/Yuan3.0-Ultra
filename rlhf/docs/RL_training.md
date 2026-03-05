@@ -2,9 +2,7 @@
 
 ## 1. Introduction
 
-This document provides instructions for Decoupled Advantage Policy Optimization (DAPO) reinforcement learning for the Yuan3.0 Ultra model.
-
-The reinforcement learning training of Yuan3.0 Ultra adopts the Decoupled Advantage Policy Optimization (DAPO) framework. It simultaneously supports multiple preference optimization strategies such as GSPO (General-Sum Preference Optimization) and SAPO (Strategy-Aware Preference Optimization). It can flexibly adapt to training data of varying length scales and provides a robust mechanism for handling ultra-long inputs.
+This document provides instructions for Reflection-aware Adaptive Policy Optimization (RAPO) reinforcement learning for the Yuan3.0 Ultra model.
 
 ## 2. Usage
 
@@ -17,9 +15,9 @@ RAY_USE_IP_ADDRESS=True ray start --head --num-cpus=64 --num-gpus=8 --port=6400 
 RAY_USE_IP_ADDRESS=True ray start --num-cpus=64 --num-gpus=8 --memory=873741824000 --dashboard-host 0.0.0.0 --address ${your_head_node_ip}:6400 --node-ip-address=${your_worker_node_ip}
 ```
 
-### Step 2: Start DAPO Training
+### Step 2: Start RAPO Training
 ```bash
-# Execute the DAPO training script for the 1020B-scale YuanVL model
+# Execute the RAPO training script for the Yuan3.0 Ultra model
 cd Yuan3.0-Ultra/rlhf/verl
 bash recipe/dapo/run_dapo_yuanvl_megatron_1020B.sh
 ```
@@ -48,43 +46,12 @@ The following parameters control input/output length and long-text handling stra
 | `overlong_penalty_factor` | Float | Penalty factor for overlong inputs (used for loss function weight adjustment). |
 | `enable_overlong_prompts_filter` | Boolean | Whether to automatically filter training samples exceeding `max_prompt_length`. |
 
-## 4. Optimization Strategy Switching
 
-Yuan3.0 Ultra supports three preference optimization strategies. Switch between them by setting the following variables. The parameter configurations for each strategy are as follows:
-
-### 4.1 GSPO (General-Sum Preference Optimization)
-```bash
-# GSPO Strategy Configuration
-loss_mode=gspo
-clip_ratio_low=0.0003
-clip_ratio_high=0.0004
-loss_agg_mode="seq-mean-token-mean"
-```
-
-### 4.2 DAPO (Distribution-Aware Preference Optimization)
-```bash
-# DAPO Strategy Configuration (Default Recommended)
-loss_mode=eighty-twenty
-clip_ratio_low=0.2
-clip_ratio_high=0.28
-loss_agg_mode="token-mean"
-```
-
-### 4.3 SAPO (Strategy-Aware Preference Optimization)
-```bash
-# SAPO Strategy Configuration
-loss_mode=sapo
-clip_ratio_low=1.05  # tau_neg (tau value for negative samples)
-clip_ratio_high=1.00 # tau_pos (tau value for positive samples)
-loss_agg_mode="token-mean"
-```
-
-
-## 5. Convert Model to Hugging Face Format
-### 5.1 File completion
+## 4. Convert Model to Hugging Face Format
+### 4.1 File Copy
 Copy all files from the `Yuan3.0-Ultra/rlhf/verl/tests/convert/` directory to the trained model path: `actor/huggingface`.
 
-### 5.2 Script Modification and Execution
+### 4.2 Script Modification and Execution
 Modify the following three parameters in the `Yuan3.0-Ultra/rlhf/verl/tools/merge_1020B.sh` script and execute it:
 ```bash
 --local_dir   # Path to the trained model
