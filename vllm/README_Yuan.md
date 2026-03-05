@@ -37,7 +37,7 @@ Yuan3.0 Ultra Model just support vLLm V1. Please refer to the tutorial [multi-no
 python -m vllm.entrypoints.openai.api_server --model=/path/Yuan3.0-Ultra-int4 --port 8100 --gpu-memory-utilization 0.9 \
  --tensor-parallel-size 4 --pipeline-parallel-size 4 --trust-remote-code --allowed-local-media-path "/path/images"
 ```
-> **Note 1**: You might also need to setup [network setup](./docs/usage/troubleshooting.md:#L10).   
+> **Note 1**: You might also need to setup [network setup](./docs/usage/troubleshooting.md#L10).   
 > **Note 2**: For the int4 model, the parallel configuration of tensor-parallel-size=4 and pipeline-parallel-size=4 is suggested.   
 > **Note 3**: For the bfloat16 model,  the parallel configuration of tensor-parallel-size=4 and pipeline-parallel-size=12 is suggested. 
 
