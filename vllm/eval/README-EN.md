@@ -168,6 +168,26 @@ We conducted evaluations on the Yuan3.0 Ultra model across multiple evaluation d
     <td style="border: 1px solid white; padding: 8px;">eval/scripts/MathVista/calculate_score_detailed_nokey.py</td>
     <td style="border: 1px solid white; padding: 8px;">eval/docs/README-MathVista.md</td>
   </tr>
+
+  <!-- Docmatrix -->
+  <tr>
+    <td style="border: 1px solid white; padding: 8px;">16</td>
+    <td style="border: 1px solid white; padding: 8px;">Docmatrix</td>
+    <td style="border: 1px solid white; padding: 8px;">eval/datasets/Docmatrix</td>
+    <td style="border: 1px solid white; padding: 8px;">eval/inference/yuanvl_api_multi_eval.py</td>
+    <td style="border: 1px solid white; padding: 8px;">eval/scripts/Docmatrix/eval_mrag.sh</td>
+    <td style="border: 1px solid white; padding: 8px;">eval/docs/README-Docmatrix.md</td>
+  </tr>
+
+  <!-- Text-to-SQL -->
+  <tr>
+    <td style="border: 1px solid white; padding: 8px;">17</td>
+    <td style="border: 1px solid white; padding: 8px;">Text-to-SQL</td>
+    <td style="border: 1px solid white; padding: 8px;">eval/datasets/Text-to-SQL</td>
+    <td style="border: 1px solid white; padding: 8px;">eval/inference/openai_api3_sql.py</td>
+    <td style="border: 1px solid white; padding: 8px;">eval/scripts/Text-to-SQL/run.sh</td>
+    <td style="border: 1px solid white; padding: 8px;">eval/docs/README-Text-to-SQL.md</td>
+  </tr> 
 </table>
 
 

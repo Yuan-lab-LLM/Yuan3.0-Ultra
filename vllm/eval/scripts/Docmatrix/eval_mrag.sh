@@ -1,0 +1,1 @@
+python3 Docmatrix_Cauldron/eval_yuan.py --path /mnt/beegfs/wangcarol/output_test_1020b/mix_case3_yuanvl_20260204_shortcot_base-stage1_iter2350_dapo_16k-async/global_step_368_int4_final/shortcot/mrag/docmatrix/docmatrix_questions.jsonl
