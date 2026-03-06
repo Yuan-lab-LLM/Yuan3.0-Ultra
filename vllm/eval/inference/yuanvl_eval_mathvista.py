@@ -19,7 +19,8 @@ import multiprocessing
 from tqdm import tqdm  # 导入 tqdm 进度条
 import time  # 用于计算运行时间
 import uuid
-
+import threading
+from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor, as_completed
 
 _T = TypeVar("_T")
 class MediaIO(ABC, Generic[_T]):
@@ -394,7 +395,7 @@ def generate_answer1(question, port, vllm_api, case_name, topk, topp, temperatur
 
 from openai import OpenAI
 
-def generate_answer(question, port, vllm_api, case_name, topk, topp, temperature, max_tokens, model_path):
+def generate_answer(question, port, vllm_api, case_name, topk, topp, temperature, max_tokens, model_path, output_path, lock):
 
     #pdb.set_trace()
     prompt = question['question']
@@ -489,7 +490,17 @@ def generate_answer(question, port, vllm_api, case_name, topk, topp, temperature
 
     print('temperature:', temperature, '  topp:', topp )
     print(outputs_dict)
-    return outputs_dict
+
+    try:
+        lock.acquire()
+        with open(output_path, 'a', encoding='utf-8') as f_out:
+            json_str = json.dumps(outputs_dict, ensure_ascii=False)
+            f_out.write(json_str+'\n')
+        lock.release()
+    except Exception as e:
+        lock.release()
+        
+    # return outputs_dict
 
 def handle_async_request(func, batch, output_path, batch_num):
     #import pdb
@@ -501,7 +512,6 @@ def handle_async_request(func, batch, output_path, batch_num):
 
         # 获取异步结果
         all_result = async_result.get()
-        print(all_result)
         json.dump(all_result,
             open(output_path, 'w',encoding='utf-8'),
             ensure_ascii=False)
@@ -570,36 +580,70 @@ if __name__ == '__main__':
         print(output_path)
         output_path_multi = os.path.join(out_dir, result_file_multi)
         print(output_path_multi)
-        func = partial(generate_answer, port=args.port, vllm_api=vllm_api, case_name = case_name, topk = topk, topp = topp, temperature = temperature, max_tokens = max_tokens, model_path=args.model_path)
-        print(batch_num)
-        all_result = handle_async_request(func, test_dataset, output_path, batch_num)
+        # func = partial(generate_answer, port=args.port, vllm_api=vllm_api, case_name = case_name, topk = topk, topp = topp, temperature = temperature, max_tokens = max_tokens, model_path=args.model_path)
+        # print(batch_num)
+        # all_result = handle_async_request(func, test_dataset, output_path, batch_num)
 
-        temp = {}
-        for data_item in all_result:
-            pid = data_item['pid']
-            temp[pid] = data_item
-        result_multi_round.append(temp)
-
-        '''temp = {}
-        with multiprocessing.Pool(processes=batch_num) as pool:
-            #pool = multiprocessing.Pool(processes=128)
-            func = partial(generate_answer, port=args.port, vllm_api=vllm_api, case_name = case_name, topk = topk, topp = topp, temperature = temperature, max_tokens = max_tokens)
-            results = pool.imap(func, test_dataset)
-
-            # 使用 tqdm 包装 results 以显示进度条
-            for i, result in enumerate(tqdm(results, total=len(test_dataset))):
-                #all_result.append(result)
-                pid = result['pid']
-                temp[pid] = result
-                if (i + 1) % 2 == 0:
-                    with open(output_path, 'w') as f:
-                        print(i + 1, ' samples saved!', output_path)
-                        json.dump(temp, f)'''
+        # temp = {}
+        # for data_item in all_result:
+        #     pid = data_item['pid']
+        #     temp[pid] = data_item
+        # result_multi_round.append(temp)
 
 
-        json.dump(temp, open(output_path, 'w'), indent=4)
-        json.dump(result_multi_round, open(output_path_multi, 'w'), indent=4)
-        print('Multi results saved to {}'.format(output_path_multi))
+
+        # json.dump(temp, open(output_path, 'w'), indent=4)
+        # json.dump(result_multi_round, open(output_path_multi, 'w'), indent=4)
+        # print('Multi results saved to {}'.format(output_path_multi))
+        # print('Results saved to {}'.format(output_path))
+        # end_time = time.strftime('%y%m%d%H%M%S', time.localtime())
+        # print('start:', start_time, ' -- end:', end_time)
+
+
+        # with ThreadPoolExecutor(max_workers=batch_num) as executor:
+        #     with open(output_path, 'w', encoding='utf-8') as f_out:
+        #         for i in range(0, len(test_dataset), batch_num):
+        #             batch = test_dataset[i:i+batch_num]
+        #             while True:
+        #                 results = list(executor.map(lambda x: generate_answer(x, args.port, vllm_api, case_name, topk, topp, temperature, max_tokens, args.model_path), batch))
+        #                 none_count = results.count("None")                
+        #                 if none_count == 0:
+        #                     for result in results:
+        #                         if result != "None":
+        #                             json_str = json.dumps(result, ensure_ascii=False)
+        #                             f_out.writelines(json_str+'\n')
+
+        #                             pid = result['pid']
+        #                             temp = {pid: result}
+        #                             f_out.writelines(json_str+'\n')
+        #                     f_out.flush()
+        #                     break
+        #                 else:
+        #                     logging.info(f"start sleep 200s")
+        #                     time.sleep(200)
+        #                     logging.info(f"loop this batch data: {count_num} >>>>>>>>")                      
+        #             count_num = count_num + 1
+        #             logging.info(f"current batch: {count_num}")
+
+        # json.dump(result_multi_round, open(output_path_multi, 'w'), indent=4)
+        # print('Multi results saved to {}'.format(output_path_multi))
+        # print('Results saved to {}'.format(output_path))
+        # end_time = time.strftime('%y%m%d%H%M%S', time.localtime())
+        # print('start:', start_time, ' -- end:', end_time)
+
+        lock = threading.Lock()
+        with ThreadPoolExecutor(max_workers=batch_num) as executor:
+            for prompts in test_dataset:
+                executor.submit(generate_answer, prompts, args.port, vllm_api, case_name, topk, topp, temperature, max_tokens, args.model_path, output_path, lock)
+
+
+        # temp = {}
+        # for data_item in all_result:
+        #     pid = data_item['pid']
+        #     temp[pid] = data_item
+        # result_multi_round.append(temp)
+        # json.dump(result_multi_round, open(output_path_multi, 'w'), indent=4)
+        # print('Multi results saved to {}'.format(output_path_multi))
         print('Results saved to {}'.format(output_path))
         end_time = time.strftime('%y%m%d%H%M%S', time.localtime())
         print('start:', start_time, ' -- end:', end_time)
