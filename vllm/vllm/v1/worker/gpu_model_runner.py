@@ -2665,12 +2665,10 @@ class GPUModelRunner(LoRAModelRunnerMixin, KVConnectorModelRunnerMixin):
             torch.distributed.broadcast(num_local_physical_experts,
                                         group=get_ep_group().cpu_group,
                                         group_src=0)
-            print("num_local_physical_experts: ", num_local_physical_experts, flush=True)
             num_local_physical_experts = int(num_local_physical_experts.item())
             new_ep_size = get_ep_group().world_size
             global_expert_load, old_global_expert_indices = (
                 EplbState.recv_state())
-            print("global_expert_load, old_global_expert_indices: ", global_expert_load, old_global_expert_indices, flush=True)
             num_logical_experts = global_expert_load.shape[1]
             self.parallel_config.eplb_config.num_redundant_experts = (
                 num_local_physical_experts * new_ep_size - num_logical_experts)
@@ -2717,7 +2715,6 @@ class GPUModelRunner(LoRAModelRunnerMixin, KVConnectorModelRunnerMixin):
         self.is_multimodal_pruning_enabled = (supports_multimodal_pruning(
             self.model) and self.model_config.multimodal_config.
                                               is_multimodal_pruning_enabled())
-        print("is_mixture_of_experts: ", is_mixture_of_experts(self.model), type(self.model), flush=True)
 
         if is_mixture_of_experts(
                 self.model) and self.parallel_config.enable_eplb:

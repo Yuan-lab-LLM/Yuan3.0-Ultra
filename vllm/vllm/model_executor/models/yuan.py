@@ -1094,7 +1094,8 @@ class YuanForCausalLM(nn.Module, SupportsPP, MixtureOfExperts):
                 query_lens_decode = decode_wrapper[1:] - decode_wrapper[:-1]
                 query_lens_decode = query_lens_decode[:num_decodes]
                 query_lens = torch.cat([query_lens_decode, query_lens_prefill]) 
-        elif isinstance(attn_metadata, FlashAttentionMetadata):
+        elif isinstance(attn_metadata, FlashAttentionMetadata) \
+                or isinstance(attn_metadata, TritonAttentionMetadata):
             # v1: use backend flashattn
             seq_lens = attn_metadata.seq_lens
             block_table = attn_metadata.block_table
