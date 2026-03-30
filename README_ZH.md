@@ -46,7 +46,7 @@ Yuan3.0 Ultra 对 <a href="https://github.com/Yuan-lab-LLM/Yuan3.0" target="_bla
 同时，我们发布了 Yuan3.0 Ultra 模型的<a href="./Docs/Yuan3.0_Ultra Paper.pdf">**技术报告**</a>，可以通过报告查看更详细的技术细节与测评结果。
 
 
-<div align=center> <img src=https://github.com/Yuan-lab-LLM/Yuan3.0-Ultra/blob/main/Docs/Yuan3.0-Ultra-architecture.png width=80% />
+<div align=center> <img src=https://github.com/Yuan-lab-LLM/Yuan3.0-Ultra/blob/main/Docs/Yuan3.0%20Ultra-architecture.png width=80% />
 
 Fig.1: Yuan3.0 Ultra 多模态大模型架构图
 
