@@ -41,7 +41,8 @@ Yuan3.0 Ultra enhances the Reflection Inhibition Reward Mechanism (RIRM) propose
 
 Additionally, the <a href="./Docs/Yuan3.0_Ultra Paper.pdf">**technical report**</a> for Yuan3.0 Ultra has been released, which provides more detailed technical specifications and evaluation results.
 
-<div align=center> <img src=https://github.com/Yuan-lab-LLM/Yuan3.0-Ultra/blob/main/Docs/Yuan3.0-Ultra-architecture.png width=80% />
+
+<div align=center> <img src=https://github.com/Yuan-lab-LLM/Yuan3.0-Ultra/blob/main/Docs/Yuan3.0%20Ultra-architecture.png width=80% />
 
 Fig.1: Yuan3.0 Ultra Multimodal Architecture
 
